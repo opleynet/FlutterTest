@@ -64,6 +64,9 @@ class _MyHomePageState extends State<MyHomePage> {
         page = HomePage();
         break;
       case 1:
+        page = FavoritesPage();
+        break;
+      case 2:
         page = Placeholder();
         break;
       default:
@@ -88,6 +91,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       icon: Icon(Icons.favorite),
                       label: Text('Favoris'),
                     ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.exit_to_app),
+                      label: Text('Exit'),
+                    ),
                   ],
                   selectedIndex: selectedIndex,
                   onDestinationSelected: (value) {
@@ -108,6 +115,34 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         );
       }
+    );
+  }
+}
+
+class FavoritesPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var appState = context.watch<MyAppState>();
+
+    if (appState.favorites.isEmpty) {
+      return Center(
+        child: Text('No favorites yet.'),
+      );
+    }
+
+    return ListView(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(20),
+          child: Text('You have '
+              '${appState.favorites.length} favorites:'),
+        ),
+        for (var pair in appState.favorites)
+          ListTile(
+            leading: Icon(Icons.favorite),
+            title: Text(pair.asLowerCase),
+          ),
+      ],
     );
   }
 }

@@ -78,3 +78,10 @@ Column est l'un des principaux widgets de mise en page de Flutter. Il accepte un
 Vous avez modifié le widget Text à la première étape.
 Ce second widget Text accepte appState et accède au seul membre de la classe, current (qui est une WordPair). WordPair fournit plusieurs getters utiles, comme asPascalCase ou asSnakeCase. Dans notre cas, nous utilisons asLowerCase. Vous pouvez modifier cela si vous préférez l'une des autres solutions.
 Notez que le code Flutter utilise massivement les virgules de fin. Ce type de virgule n'est pas nécessaire ici, car children est le dernier (et le seul) membre de cette liste de paramètres Column spécifiques. L'utilisation des virgules de fin est généralement adaptée : elle simplifie l'ajout de membres et sert de repère lorsque le formateur automatique Dart doit insérer une nouvelle ligne. Pour en savoir plus, consultez Code formatting (Formatage du code).
+
+## Difference Stateless and statefull widget
+Un widget est soit avec état, soit sans état. Si un widget peut changer (par exemple, lorsqu'un utilisateur interagit avec lui), il est avec état.
+
+Un widget sans étatIcon ne change jamais. , IconButton, et Textsont des exemples de widgets sans état. Les widgets sans état héritent de la classe StatelessWidget.
+
+Un widget à état est dynamique : par exemple, il peut modifier son apparence en réponse à des événements déclenchés par des interactions utilisateur ou lorsqu'il reçoit des données. Checkbox` <T>` Radio, ` <T>` Slider, `<T> InkWell`, Form`<T>` et `<T>` TextField sont des exemples de widgets à état. Les widgets à état héritent de la classe `StatefulWidget` StatefulWidget.

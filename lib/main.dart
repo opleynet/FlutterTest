@@ -40,19 +40,21 @@ class MyHomePage extends StatelessWidget {
     var pair = appState.current;                 // ← Add this.
 
     return Scaffold(
-      body: Column(
-        children: [
-          Text('A random test idea:'),
-          BigCard(pair: pair),
-          // ↓ Add this.
-          ElevatedButton(
-            onPressed: () {
-              print('button pressed!');
-              appState.getNext();
-            },
-            child: Text('Next'),
-          ),
-        ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            BigCard(pair: pair),
+            SizedBox(height: 80),
+            ElevatedButton(
+              onPressed: () {
+                print('button pressed!');
+                appState.getNext();
+              },
+              child: Text('Next'),
+            ),
+          ],
+        ),
       ),
     );
   }

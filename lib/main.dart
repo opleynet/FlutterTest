@@ -53,8 +53,21 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  @override
+ var selectedIndex = 0;
+ 
+ @override
   Widget build(BuildContext context) {
+    Widget page;
+    switch (selectedIndex) {
+      case 0:
+        page = HomePage();
+        break;
+      case 1:
+        page = Placeholder();
+        break;
+      default:
+        throw UnimplementedError('no widget for $selectedIndex');
+    }
     return Scaffold(
       body: Row(
         children: [
@@ -72,16 +85,19 @@ class _MyHomePageState extends State<MyHomePage> {
                   label: Text('Favoris'),
                 ),
               ],
-              selectedIndex: 0,
+              selectedIndex: selectedIndex,
               onDestinationSelected: (value) {
-                print('selected: $value');
+                print('selected rail navigation: $value');
+                setState(() {
+                  selectedIndex = value;
+                });
               },
             ),
           ),
           Expanded(
             child: Container(
               color: Theme.of(context).colorScheme.primaryContainer,
-              child: HomePage(),
+              child: page,
             ),
           ),
         ],
